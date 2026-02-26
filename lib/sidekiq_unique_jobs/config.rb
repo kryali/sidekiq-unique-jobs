@@ -24,6 +24,7 @@ module SidekiqUniqueJobs
     :raise_on_config_error,
     :current_redis_version,
     :digest_algorithm,
+    :locksmith_executor
   )
 
   #
@@ -139,6 +140,9 @@ module SidekiqUniqueJobs
     #
     # @return [:legacy] default digest algorithm :modern or :legacy
     DIGEST_ALGORITHM      = :legacy
+    #
+    # @return [nil] default executor for Locksmith promises (nil = fallback to global_io_executor)
+    LOCKSMITH_EXECUTOR    = nil
 
     #
     # Returns a default configuration
@@ -206,6 +210,7 @@ module SidekiqUniqueJobs
         RAISE_ON_CONFIG_ERROR,
         REDIS_VERSION,
         DIGEST_ALGORITHM,
+        LOCKSMITH_EXECUTOR,
       )
     end
 
